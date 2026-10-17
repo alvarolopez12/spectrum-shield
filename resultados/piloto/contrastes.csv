@@ -1,0 +1,27 @@
+hipotesis,sistema_a,sistema_b,metrica,grupo,n,ambos,solo_a,solo_b,ninguno,p_mcnemar,diferencia,ic95_inf_dif,ic95_sup_dif
+H2,agente[granite4.1:8b],agente_escudo[granite4.1:8b],m1,compuesta,20,0,16,0,4,3.0517578125e-05,0.8,0.65,0.95
+H2,agente[granite4.1:8b],agente_escudo[granite4.1:8b],m1,simple,20,0,2,0,18,0.5,0.1,0.0,0.25
+H2,agente[granite4.1:8b],agente_escudo[granite4.1:8b],m1,todas,40,0,18,0,22,7.62939453125e-06,0.45,0.35,0.55
+H2 coste,agente_escudo[granite4.1:8b],agente[granite4.1:8b],m2,simple,20,5,0,0,15,1.0,0.0,0.0,0.0
+H2 coste,agente_escudo[granite4.1:8b],agente[granite4.1:8b],m3,simple,20,3,0,1,16,1.0,-0.05,-0.15,0.0
+H2 coste,agente_escudo[granite4.1:8b],agente[granite4.1:8b],m2,compuesta,20,1,0,0,19,1.0,0.0,0.0,0.0
+H2 coste,agente_escudo[granite4.1:8b],agente[granite4.1:8b],m3,compuesta,20,0,2,0,18,0.5,0.1,0.0,0.25
+H2 coste,agente_escudo[granite4.1:8b],agente[granite4.1:8b],m2,todas,40,6,0,0,34,1.0,0.0,0.0,0.0
+H2 coste,agente_escudo[granite4.1:8b],agente[granite4.1:8b],m3,todas,40,3,2,1,34,1.0,0.025,-0.05,0.1
+H3,agente_escudo[granite4.1:8b],reglas,m2,simple,20,5,0,14,1,0.0001220703125,-0.7,-0.85,-0.55
+H3,agente_escudo[granite4.1:8b],reglas,m3,simple,20,3,0,17,0,1.52587890625e-05,-0.85,-0.95,-0.7
+H3,agente_escudo[granite4.1:8b],reglas,m2,compuesta,20,1,0,18,1,7.62939453125e-06,-0.9,-1.0,-0.75
+H3,agente_escudo[granite4.1:8b],reglas,m3,compuesta,20,2,0,18,0,7.62939453125e-06,-0.9,-1.0,-0.75
+H2,agente[qwen3.8:27b],agente_escudo[qwen3.8:27b],m1,compuesta,20,0,0,0,20,1.0,0.0,0.0,0.0
+H2,agente[qwen3.8:27b],agente_escudo[qwen3.8:27b],m1,simple,20,0,1,0,19,1.0,0.05,0.0,0.15
+H2,agente[qwen3.8:27b],agente_escudo[qwen3.8:27b],m1,todas,40,0,1,0,39,1.0,0.025,0.0,0.075
+H2 coste,agente_escudo[qwen3.8:27b],agente[qwen3.8:27b],m2,simple,20,14,0,0,6,1.0,0.0,0.0,0.0
+H2 coste,agente_escudo[qwen3.8:27b],agente[qwen3.8:27b],m3,simple,20,18,1,0,1,1.0,0.05,0.0,0.15
+H2 coste,agente_escudo[qwen3.8:27b],agente[qwen3.8:27b],m2,compuesta,20,11,0,0,9,1.0,0.0,0.0,0.0
+H2 coste,agente_escudo[qwen3.8:27b],agente[qwen3.8:27b],m3,compuesta,20,20,0,0,0,1.0,0.0,0.0,0.0
+H2 coste,agente_escudo[qwen3.8:27b],agente[qwen3.8:27b],m2,todas,40,25,0,0,15,1.0,0.0,0.0,0.0
+H2 coste,agente_escudo[qwen3.8:27b],agente[qwen3.8:27b],m3,todas,40,38,1,0,1,1.0,0.025,0.0,0.075
+H3,agente_escudo[qwen3.8:27b],reglas,m2,simple,20,14,0,5,1,0.0625,-0.25,-0.25,-0.25
+H3,agente_escudo[qwen3.8:27b],reglas,m3,simple,20,19,0,1,0,1.0,-0.05,-0.15,0.0
+H3,agente_escudo[qwen3.8:27b],reglas,m2,compuesta,20,11,0,8,1,0.0078125,-0.4,-0.6,-0.2
+H3,agente_escudo[qwen3.8:27b],reglas,m3,compuesta,20,20,0,0,0,1.0,0.0,0.0,0.0

@@ -1,0 +1,4 @@
+# El experimento no tiene dependencias de Python: solo usa la biblioteca estándar (Python 3.9 o superior).
+# Programas externos: Ollama (modelos de lenguaje) y Open Policy Agent (brew install opa).
+# Solo para las figuras de resultados (scripts/figuras.py):
+matplotlib>=3.7
