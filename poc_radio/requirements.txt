@@ -1,0 +1,10 @@
+# Prueba de concepto con radio real (poc_radio). El experimento principal no necesita nada de esto.
+# Instalar dentro de un entorno virtual (README.md de esta carpeta, paso 2.4).
+numpy>=1.24
+matplotlib>=3.7
+# Pluto: enlaces de Python de libiio 0.x (compilada en el paso 2.2) y pyadi-iio.
+# pylibiio 1.0 es para libiio 1.0: si se instala con libiio 0.26 no funciona.
+pylibiio==0.25
+pyadi-iio>=0.0.17
+# RTL-SDR: necesita librtlsdr instalada (paso 2.3). Con el RTL-SDR Blog V4 no instales pyrtlsdrlib.
+pyrtlsdr>=0.3

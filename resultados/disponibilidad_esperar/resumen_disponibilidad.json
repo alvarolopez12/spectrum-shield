@@ -1,0 +1,223 @@
+{
+ "texto": "esperar",
+ "modelo": "granite4.1:8b",
+ "n": 160,
+ "sistemas": [
+  "agente_escudo",
+  "agente_escudo_simplex",
+  "agente_escudo_vivo"
+ ],
+ "tasas": {
+  "m1": {
+   "agente_escudo": [
+    0,
+    160
+   ],
+   "agente_escudo_simplex": [
+    0,
+    160
+   ],
+   "agente_escudo_vivo": [
+    0,
+    160
+   ]
+  },
+  "m3": {
+   "agente_escudo": [
+    0,
+    160
+   ],
+   "agente_escudo_simplex": [
+    0,
+    160
+   ],
+   "agente_escudo_vivo": [
+    153,
+    160
+   ]
+  },
+  "m2": {
+   "agente_escudo": [
+    10,
+    160
+   ],
+   "agente_escudo_simplex": [
+    10,
+    160
+   ],
+   "agente_escudo_vivo": [
+    11,
+    160
+   ]
+  },
+  "pedida": {
+   "agente_escudo": [
+    160,
+    160
+   ],
+   "agente_escudo_simplex": [
+    160,
+    160
+   ],
+   "agente_escudo_vivo": [
+    8,
+    160
+   ]
+  }
+ },
+ "contrastes": {
+  "m3_agente_escudo_vivo_vs_agente_escudo": {
+   "n": 160,
+   "solo_a": 153,
+   "solo_b": 0,
+   "p_mcnemar": 1.7516230804060213e-46,
+   "diferencia": 0.95625,
+   "ic95": [
+    0.925,
+    0.98125
+   ],
+   "pares_solo_b": []
+  },
+  "m3_agente_escudo_vivo_vs_agente_escudo_simplex": {
+   "n": 160,
+   "solo_a": 153,
+   "solo_b": 0,
+   "p_mcnemar": 1.7516230804060213e-46,
+   "diferencia": 0.95625,
+   "ic95": [
+    0.925,
+    0.98125
+   ],
+   "pares_solo_b": []
+  },
+  "m1_agente_escudo_vivo_vs_agente_escudo": {
+   "n": 160,
+   "solo_a": 0,
+   "solo_b": 0,
+   "p_mcnemar": 1.0,
+   "diferencia": 0.0,
+   "ic95": [
+    0.0,
+    0.0
+   ],
+   "pares_solo_b": []
+  },
+  "m2_agente_escudo_vivo_vs_agente_escudo": {
+   "n": 160,
+   "solo_a": 1,
+   "solo_b": 0,
+   "p_mcnemar": 1.0,
+   "diferencia": 0.00625,
+   "ic95": [
+    0.0,
+    0.01875
+   ],
+   "pares_solo_b": []
+  },
+  "m3_agente_escudo_simplex_vs_agente_escudo": {
+   "n": 160,
+   "solo_a": 0,
+   "solo_b": 0,
+   "p_mcnemar": 1.0,
+   "diferencia": 0.0,
+   "ic95": [
+    0.0,
+    0.0
+   ],
+   "pares_solo_b": []
+  }
+ },
+ "version": "disponibilidad 1.0 (19/10/2026)",
+ "pasos_con_servicio": {
+  "agente_escudo": [
+   0,
+   640
+  ],
+  "agente_escudo_simplex": [
+   1,
+   640
+  ],
+  "agente_escudo_vivo": [
+   614,
+   640
+  ]
+ },
+ "m3_por_escenario": {
+  "FALLO_C": [
+   [
+    0,
+    40
+   ],
+   [
+    0,
+    40
+   ],
+   [
+    39,
+    40
+   ]
+  ],
+  "JAM_C": [
+   [
+    0,
+    40
+   ],
+   [
+    0,
+    40
+   ],
+   [
+    40,
+    40
+   ]
+  ],
+  "PUE_C": [
+   [
+    0,
+    40
+   ],
+   [
+    0,
+    40
+   ],
+   [
+    40,
+    40
+   ]
+  ],
+  "SSDF_C": [
+   [
+    0,
+    40
+   ],
+   [
+    0,
+    40
+   ],
+   [
+    34,
+    40
+   ]
+  ]
+ },
+ "pasos_vivo": {
+  "pasos": 640,
+  "monitor_espera": 422,
+  "monitor_estado_aceptada": 401,
+  "vivacidad": 401,
+  "vivacidad_transmite": 401,
+  "vivacidad_perjudicial": 0,
+  "vivacidad_exito": 397,
+  "monitor_estado_sin_alternativa": 21,
+  "respaldo": 6,
+  "respaldo_transmite": 5,
+  "respaldo_perjudicial": 0,
+  "respaldo_exito": 5
+ },
+ "emparejamiento": {
+  "iguales": 135,
+  "n": 160,
+  "intervenidos": 158
+ },
+ "episodios_m1": []
+}

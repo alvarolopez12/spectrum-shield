@@ -1,0 +1,11 @@
+{
+  "serie_pluto_entorno": "",
+  "serie_pluto_secundario": "",
+  "uri_pluto_entorno": "",
+  "uri_pluto_secundario": "",
+  "serie_rtl": "",
+  "ganancia_rtl_db": 28.0,
+  "ppm_rtl": 0,
+  "objetivo_snr_entorno_db": 30,
+  "objetivo_snr_secundario_db": 36
+}

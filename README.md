@@ -30,7 +30,22 @@ scripts/
   ejecutar.py                  ejecuta una campaña y guarda las trayectorias
   resumen.py                   tasas con intervalo de Agresti-Coull y contrastes de McNemar
   figuras.py                   figuras y tablas de resultados del capítulo 5 (necesita matplotlib)
+  datos_cap5.py                cifras del capítulo 5 por modelo (tasas, contrastes, desgloses), en JSON
+  escudo_extra.py              riesgo residual del escudo: cota analítica, I1 con memoria, origen comprometido
+                               y contrafactual sobre una campaña
+  ataque_adaptativo.py         ataques adaptativos (insistente y reescrito por un modelo) sobre los mismos episodios
+  comparar_campanas.py         repeticiones de una ejecución y comparación de sistemas sobre las mismas semillas
+  experimentos_extra.sh        secuencia de los experimentos exploratorios, para después de la campaña
+  respaldo_simplex.py          escudo con respaldo de reglas (Simplex): al primer bloqueo de un paso, deciden las reglas
+  experimentos_simplex.sh      ejecuciones del respaldo Simplex, después de experimentos_extra.sh
+  exploratorios.py             cifras y figuras de los experimentos exploratorios para la memoria
+  disponibilidad.py            ataque a la disponibilidad («seguro pero inútil») y Simplex con vigilancia de la vivacidad
+  experimentos_disponibilidad.sh  ejecuciones de disponibilidad.py (unas 7 h con granite)
+  garantias.py                 garantías del escudo según la evidencia («contrato de percepción»), sin modelo de
+                               lenguaje; con --solo-campanas, contraste de la cota con las campañas guardadas
   caracterizar_escudo.py       errores del escudo sin modelo de lenguaje, sobre todas las acciones candidatas
+poc_radio/                     prueba de concepto con radio real en 434 MHz (dos ADALM-Pluto y un RTL-SDR): sensado real
+                               conectado a las herramientas, demostración de los cuatro casos y minicampaña (README propio)
 tests/                         pruebas unitarias
 resultados/                    una carpeta por campaña
 ```
@@ -45,10 +60,19 @@ python3 scripts/prueba_modelos.py              # comprueba los modelos y estima 
 caffeinate -i python3 scripts/ejecutar.py --campana piloto --semillas 0-4
 python3 scripts/resumen.py --campana piloto
 python3 scripts/figuras.py --campana piloto     # figuras (pip install matplotlib)
+python3 scripts/datos_cap5.py --campana campana --modelo granite4.1:8b   # cifras del capítulo 5
+python3 scripts/escudo_extra.py --campana campana                        # riesgo residual del escudo (1 min)
+caffeinate -i bash scripts/experimentos_extra.sh                         # exploratorios, tras la campaña (unas 8 h)
+caffeinate -i bash scripts/experimentos_simplex.sh                       # respaldo Simplex, tras los anteriores (unas 3 h)
+caffeinate -i bash scripts/experimentos_disponibilidad.sh                # disponibilidad y vivacidad (unas 7 h)
+python3 scripts/garantias.py                                             # garantías del escudo (unos minutos)
+python3 scripts/garantias.py --solo-campanas                             # contraste con las campañas (1 s)
+python3 poc_radio/comprobar_radio.py                                     # radio real: comprobación y calibración (poc_radio/README.md)
+python3 scripts/exploratorios.py                                         # cifras y figuras de los exploratorios
 python3 scripts/caracterizar_escudo.py          # escudo sin agente (unos 30 s)
 ```
 
-`caffeinate -i` evita que el Mac se suspenda mientras corre la campaña. Si la ejecución se interrumpe, basta con lanzar el mismo comando otra vez: los episodios que ya tienen su fichero se saltan. La campaña completa es `--campana campana --semillas 20-39`. Las semillas 0 a 4 son las del piloto y las de 0 a 19 se usaron durante el desarrollo; la campaña usa semillas que no se han mirado antes, para que ningún episodio visto al ajustar el diseño entre en el análisis. Con `--sistemas` y `--modelos` se puede limitar lo que se ejecuta, por ejemplo `--sistemas reglas` para correr solo la línea base.
+`caffeinate -i` evita que el Mac se suspenda mientras corre la campaña. Si la ejecución se interrumpe, basta con lanzar el mismo comando otra vez: los episodios que ya tienen su fichero se saltan. La campaña completa es `--campana campana --semillas 20-59 --modelos granite4.1:8b,qwen3.8:27b` (40 semillas; granite va primero porque es mucho más rápido). Las semillas 0 a 4 son las del piloto y las de 0 a 19 se usaron durante el desarrollo; la campaña usa semillas que no se han mirado antes, para que ningún episodio visto al ajustar el diseño entre en el análisis. Se eligieron 40 semillas con los datos del piloto: con 20, la potencia de McNemar para qwen, que casi no comete acciones perjudiciales, sería muy baja. Con `--sistemas` y `--modelos` se puede limitar lo que se ejecuta, por ejemplo `--sistemas reglas` para correr solo la línea base.
 
 ## Diseño del experimento
 
@@ -94,8 +118,21 @@ Cada campaña se guarda en `resultados/<campaña>/`:
 - `episodios.csv`: una fila por episodio.
 - `tasas.csv` y `contrastes.csv`: los genera `scripts/resumen.py`.
 - `figuras/`: figuras y tablas del capítulo 5, que genera `scripts/figuras.py`.
+- `datos_cap5_<modelo>.json`: cifras del capítulo 5 de un modelo, que genera `scripts/datos_cap5.py`.
 
 La caracterización del escudo sin agente se guarda aparte, en `resultados/caracterizacion_escudo/`: errores por incidente y por variante del escudo (`resumen.csv`), bloqueos según el estado real del canal (`por_estado.csv`) y revocaciones de la confianza en el centro de fusión (`confianza.csv`).
+
+### Experimentos exploratorios
+
+Quedan fuera de los criterios de decisión fijados antes de la campaña y se analizan aparte. Usan las mismas semillas que la campaña, de modo que cada episodio queda emparejado con el original, y no tocan el código que genera las trayectorias (el manifiesto de cada campaña lleva la misma huella que la campaña principal).
+
+- `resultados/escudo_extra/`: riesgo residual del escudo sin agente. La probabilidad de que una transmisión sobre un primario pase el escudo con la evidencia de un paso se calcula en cerrado a partir del modelo de medidas (`cota_analitica.json`) y se compara con la medida; variantes de I1 con memoria de los pasos anteriores y con la estimación de origen comprometida (`variantes.csv`); contrafactual sobre las trayectorias de una campaña (`contrafactual.csv`).
+- `resultados/adaptativa_insistente/` y `resultados/adaptativa_reescrita/`: ataques adaptativos sobre los episodios compuestos. En el insistente, el texto de la plantilla pide repetir la acción tras cada rechazo; en el reescrito, un modelo atacante reescribe el texto hasta tres veces con la conducta del agente como realimentación. `scripts/ataque_adaptativo.py --resumen` compara cada uno con la campaña.
+- `resultados/endurecido/`: el agente sin escudo con un aviso de seguridad en sus instrucciones (defensa dentro del modelo), para compararlo con el escudo (`scripts/comparar_campanas.py sistemas`).
+- `resultados/repeticion_2/` y `resultados/repeticion_3/`: repeticiones de diez semillas para medir la variación entre ejecuciones del mismo modelo (`scripts/comparar_campanas.py repeticiones`).
+- `resultados/simplex_insistente/` y `resultados/simplex_original/`: el agente con escudo y un respaldo de tipo Simplex: en cuanto el escudo bloquea una propuesta del agente, ese paso lo decide la línea base de reglas, cuya acción también pasa por el escudo. Se ejecuta con los textos del ataque insistente y con los de la campaña; `scripts/respaldo_simplex.py --resumen` lo compara con agente y agente_escudo de la campaña de referencia y comprueba que, hasta el primer bloqueo, el agente hace lo mismo que en agente_escudo.
+- `resultados/datos_exploratorios.json` y `resultados/figuras_exploratorios/`: cifras y figuras de todos los experimentos exploratorios para la memoria, que genera `scripts/exploratorios.py` (incluye el respaldo Simplex, la disponibilidad y las garantías cuando se han ejecutado).
+- `resultados/garantias/`: datos, figuras y salida de `scripts/garantias.py --campanas` (garantías del escudo según la evidencia).
 
 ## Uso de IA
 

@@ -26,7 +26,7 @@ import argparse
 import csv
 import statistics
 import sys
-from collections import Counter, defaultdict
+from collections import Counter
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[1]
@@ -333,7 +333,8 @@ def figura_diagnosticos(plt, filas, ruta):
 
 
 def figura_episodio(plt, campana: Campana, escenario: str, semilla: int, modelo: str, ruta) -> bool:
-    """Un mismo episodio con y sin escudo: estado real de cada canal, acciones ejecutadas y bloqueadas."""
+    """Un mismo episodio con y sin escudo: estado real de cada canal, acciones ejecutadas y bloqueadas,
+    y el diagnóstico registrado en cada paso."""
     from matplotlib.patches import Rectangle
     from spectrum_shield.evaluacion import id_sistema
     import json
@@ -345,11 +346,21 @@ def figura_episodio(plt, campana: Campana, escenario: str, semilla: int, modelo:
         eps[s] = json.loads(r.read_text(encoding="utf-8"))
     relleno = {"primario": ("#F6DEDB", "primario"), "emulador": ("#FBEBD0", "emulador"),
                "interferencia": ("#FBEBD0", "interferencia"), "degradado": ("#EFEFEF", "degradado")}
-    fig, axes = plt.subplots(1, 2, figsize=(6.3, 3.15))
+    rojo = "#A93226"
+    fig, axes = plt.subplots(1, 2, figsize=(6.3, 3.55))
     for ax, (s, ep) in zip(axes, eps.items()):
         pasos = [p for p in ep["pasos"] if not p["automatico"]]
         n_canales = len(pasos[0]["estado_real"])
         for j, p in enumerate(pasos):
+            # propuestas bloqueadas, agrupadas por canal (puede haber varios intentos en el mismo paso)
+            bloqueos = {}
+            for pr in p["propuestas"]:
+                if pr["estado"] == "bloqueada" and pr["accion"].get("accion") == "TRANSMITIR":
+                    n, invs = bloqueos.get(pr["accion"]["canal"], (0, set()))
+                    bloqueos[pr["accion"]["canal"]] = (n + 1, invs | set(pr["escudo"]["infracciones"]))
+            a = p["ejecutada"]["accion"]
+            canal_ejec = a.get("canal") if a.get("accion") == "TRANSMITIR" else None
+            con_etiqueta = set(bloqueos) | ({canal_ejec} if p["ejecutada"]["perjudicial"] else set())
             for c in p["estado_real"]:
                 estado = next((k for k in ("primario", "emulador", "interferencia", "degradado") if c[k]), None)
                 y = c["canal"]
@@ -357,40 +368,58 @@ def figura_episodio(plt, campana: Campana, escenario: str, semilla: int, modelo:
                 ax.add_patch(Rectangle((j, y), 0.96, 0.92, fc=fc, ec=REJILLA, lw=0.6, zorder=1))
                 if y == n_canales - 1:
                     ax.add_patch(Rectangle((j, y), 0.96, 0.92, fc="none", ec="#BDBDBD", lw=0, hatch="////", zorder=1))
-                if txt:
-                    ax.text(j + 0.48, y + 0.74, txt, ha="center", va="center", fontsize=5.6, color=TINTA_2, zorder=2)
-            for pr in p["propuestas"]:
-                if pr["estado"] == "bloqueada":
-                    c = pr["accion"].get("canal")
-                    ax.plot(j + 0.48, c + 0.36, marker="x", ms=7, mew=1.8, color="#A93226", zorder=4)
-                    ax.text(j + 0.48, c + 0.75, "bloqueada (" + "+".join(pr["escudo"]["infracciones"]) + ")",
-                            fontsize=5.4, color=TINTA, va="center", ha="center", zorder=4,
-                            bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none"))
-            a = p["ejecutada"]["accion"]
-            if a.get("accion") == "TRANSMITIR":
+                if txt and y not in con_etiqueta:
+                    ax.text(j + 0.48, y + 0.78, txt, ha="center", va="center", fontsize=5.4, color=TINTA_2, zorder=2)
+            for c, (n, invs) in bloqueos.items():
+                x = j + (0.27 if c == canal_ejec else 0.48)
+                ax.plot(x, c + 0.36, marker="x", ms=6.5, mew=1.7, color=rojo, zorder=4)
+                etiqueta = "bloqueada" + (f" ×{n}" if n > 1 else "") + " (" + "+".join(sorted(invs)) + ")"
+                ax.text(j + 0.48, c + 0.75, etiqueta, fontsize=5.2, color=TINTA, va="center", ha="center", zorder=6,
+                        bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none"))
+            if canal_ejec is not None:
                 perj = p["ejecutada"]["perjudicial"]
-                ax.plot(j + 0.48, a["canal"] + 0.4, "o", ms=7, color=TINTA, mec="#A93226" if perj else "white",
+                x = j + (0.69 if canal_ejec in bloqueos else 0.48)
+                ax.plot(x, canal_ejec + 0.38, "o", ms=6.5, color=TINTA, mec=rojo if perj else "white",
                         mew=1.8 if perj else 1.0, zorder=5)
-                if perj:
-                    ax.text(j + 0.48, a["canal"] + 0.75, "perjudicial", fontsize=5.4, color=TINTA, ha="center",
-                            va="center", zorder=5, bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none"))
+                if perj and canal_ejec not in bloqueos:
+                    ax.text(j + 0.48, canal_ejec + 0.75, "perjudicial", fontsize=5.2, color=TINTA, ha="center",
+                            va="center", zorder=6, bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none"))
+            # último diagnóstico registrado en el paso
+            diag = [d["etiqueta"] for d in ep["diagnosticos"] if d["paso"] == p["paso"]]
+            if diag:
+                texto = ETIQUETA_CORTA.get(diag[-1], diag[-1]).replace(" ", "\n")
+                ax.text(j + 0.48, n_canales + 0.42, texto, ha="center", va="center", fontsize=5.8,
+                        color=TINTA if diag[-1] == ep["tipo"] else TINTA_2,
+                        fontweight="bold" if diag[-1] == ep["tipo"] else "normal", clip_on=False)
         ax.set_xlim(-0.05, len(pasos))
-        ax.set_ylim(n_canales, -0.1)
+        ax.set_ylim(n_canales + 0.85, -0.1)
+        ax.xaxis.set_ticks_position("top")
         ax.set_xticks([j + 0.48 for j in range(len(pasos))])
-        ax.set_xticklabels([f"paso {p['paso']}" for p in pasos], fontsize=7)
-        ax.set_yticks([c + 0.46 for c in range(n_canales)])
-        ax.set_yticklabels([f"canal {c}" if c < n_canales - 1 else f"canal {c}\n(protegido)" for c in range(n_canales)]
-                           if s == "agente" else [""] * n_canales, fontsize=6.8)
+        ax.set_xticklabels([f"paso {p['paso']}" for p in pasos], fontsize=6.8)
+        ys = [c + 0.46 for c in range(n_canales)] + [n_canales + 0.42]
+        nombres = ([f"canal {c}" if c < n_canales - 1 else f"canal {c}\n(protegido)" for c in range(n_canales)]
+                   + ["diagnóstico"])
+        ax.set_yticks(ys)
+        ax.set_yticklabels(nombres if s == "agente" else [""] * len(ys), fontsize=6.6)
         ax.tick_params(length=0)
         for lado in ax.spines.values():
             lado.set_visible(False)
-        ax.set_title(f"{NOMBRE[s]} ({modelo})", fontsize=8, fontweight="bold", loc="left", color=TINTA)
-        diags = ", ".join(f"paso {d['paso']}: {d['etiqueta']}" for d in ep["diagnosticos"] if d["paso"] >= 2)
-        ax.text(0, n_canales + 0.75, "Diagnósticos: " + (diags or "ninguno"), fontsize=6.4, color=TINTA_2,
-                va="top", ha="left")
-    fig.text(0.01, 0.985, f"{escenario}, semilla {semilla}. Círculo: transmisión ejecutada; aspa: propuesta bloqueada "
-                          f"por el escudo.", fontsize=6.8, color=TINTA_2, va="top")
-    fig.subplots_adjust(left=0.12, right=0.99, top=0.86, bottom=0.2, wspace=0.06)
+        ax.set_title(f"{NOMBRE[s]} ({modelo})", fontsize=8, fontweight="bold", loc="left", color=TINTA, pad=14)
+    ep = eps["agente"]
+    linea = f"{escenario}, semilla {semilla}. Incidente real: {ETIQUETA_CORTA.get(ep['tipo'], ep['tipo']).lower()}."
+    iny = ep["resumen"].get("inyeccion")
+    if iny:
+        lugar = "las notas del sensado" if iny["ubicacion"] == "notas_sensado" else "los mensajes del controlador"
+        if iny["objetivo"] == "transmitir_en_canal":
+            pide = f"pide transmitir en el canal {iny['canal_objetivo']}"
+        else:
+            pide = f"pide transmitir con {iny['potencia_dbm']:g} dBm"
+        linea += f" Inyección {iny['id']} en {lugar}: {pide}."
+    fig.text(0.01, 0.985, linea, fontsize=6.8, color=TINTA, va="top")
+    fig.text(0.01, 0.945, "Círculo: transmisión ejecutada (borde rojo si es perjudicial). Aspa: propuesta bloqueada por "
+                          "el escudo. Sin círculo: el sistema no transmite. Diagnóstico en negrita: correcto.",
+             fontsize=6.2, color=TINTA_2, va="top")
+    fig.subplots_adjust(left=0.12, right=0.99, top=0.8, bottom=0.04, wspace=0.06)
     fig.savefig(ruta)
     plt.close(fig)
     return True

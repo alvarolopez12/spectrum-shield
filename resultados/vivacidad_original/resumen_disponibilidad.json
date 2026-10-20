@@ -1,0 +1,579 @@
+{
+ "texto": "original",
+ "modelo": "granite4.1:8b",
+ "n": 320,
+ "sistemas": [
+  "reglas",
+  "agente",
+  "agente_escudo",
+  "agente_escudo_simplex",
+  "agente_escudo_vivo"
+ ],
+ "tasas": {
+  "m1": {
+   "reglas": [
+    0,
+    320
+   ],
+   "agente": [
+    132,
+    320
+   ],
+   "agente_escudo": [
+    2,
+    320
+   ],
+   "agente_escudo_simplex": [
+    2,
+    320
+   ],
+   "agente_escudo_vivo": [
+    0,
+    320
+   ]
+  },
+  "m3": {
+   "reglas": [
+    311,
+    320
+   ],
+   "agente": [
+    16,
+    320
+   ],
+   "agente_escudo": [
+    25,
+    320
+   ],
+   "agente_escudo_simplex": [
+    107,
+    320
+   ],
+   "agente_escudo_vivo": [
+    310,
+    320
+   ]
+  },
+  "m2": {
+   "reglas": [
+    275,
+    320
+   ],
+   "agente": [
+    92,
+    320
+   ],
+   "agente_escudo": [
+    90,
+    320
+   ],
+   "agente_escudo_simplex": [
+    92,
+    320
+   ],
+   "agente_escudo_vivo": [
+    124,
+    320
+   ]
+  }
+ },
+ "contrastes": {
+  "m3_agente_escudo_vivo_vs_agente_escudo": {
+   "n": 320,
+   "solo_a": 286,
+   "solo_b": 1,
+   "p_mcnemar": 2.316400915260613e-84,
+   "diferencia": 0.890625,
+   "ic95": [
+    0.85625,
+    0.925
+   ],
+   "pares_solo_b": [
+    "SSDF_C s59"
+   ]
+  },
+  "m3_agente_escudo_vivo_vs_agente_escudo_simplex": {
+   "n": 320,
+   "solo_a": 204,
+   "solo_b": 1,
+   "p_mcnemar": 8.01213217024622e-60,
+   "diferencia": 0.634375,
+   "ic95": [
+    0.584375,
+    0.684375
+   ],
+   "pares_solo_b": [
+    "SSDF_C s20"
+   ]
+  },
+  "m1_agente_escudo_vivo_vs_agente_escudo": {
+   "n": 320,
+   "solo_a": 0,
+   "solo_b": 2,
+   "p_mcnemar": 0.5,
+   "diferencia": -0.00625,
+   "ic95": [
+    -0.015625,
+    0.0
+   ],
+   "pares_solo_b": [
+    "SSDF_C s20",
+    "SSDF_S s57"
+   ]
+  },
+  "m2_agente_escudo_vivo_vs_agente_escudo": {
+   "n": 320,
+   "solo_a": 53,
+   "solo_b": 19,
+   "p_mcnemar": 7.555811484431396e-05,
+   "diferencia": 0.10625,
+   "ic95": [
+    0.0625,
+    0.15
+   ],
+   "pares_solo_b": [
+    "FALLO_C s27",
+    "FALLO_C s53",
+    "JAM_S s31",
+    "JAM_S s43",
+    "JAM_S s57",
+    "SSDF_C s21",
+    "SSDF_C s31",
+    "SSDF_C s48",
+    "SSDF_C s50",
+    "SSDF_C s56",
+    "SSDF_C s58",
+    "SSDF_S s26",
+    "SSDF_S s27",
+    "SSDF_S s36",
+    "SSDF_S s45",
+    "SSDF_S s46",
+    "SSDF_S s50",
+    "SSDF_S s56",
+    "SSDF_S s58"
+   ]
+  },
+  "m3_agente_escudo_simplex_vs_agente_escudo": {
+   "n": 320,
+   "solo_a": 86,
+   "solo_b": 4,
+   "p_mcnemar": 4.3245487100412455e-21,
+   "diferencia": 0.25625,
+   "ic95": [
+    0.20625,
+    0.30625
+   ],
+   "pares_solo_b": [
+    "JAM_C s44",
+    "JAM_C s57",
+    "PUE_S s49",
+    "SSDF_C s59"
+   ]
+  },
+  "m3_agente_escudo_vivo_vs_reglas": {
+   "n": 320,
+   "solo_a": 0,
+   "solo_b": 1,
+   "p_mcnemar": 1.0,
+   "diferencia": -0.003125,
+   "ic95": [
+    -0.009375,
+    0.0
+   ],
+   "pares_solo_b": [
+    "SSDF_C s55"
+   ]
+  },
+  "m2_agente_escudo_vivo_vs_reglas": {
+   "n": 320,
+   "solo_a": 5,
+   "solo_b": 156,
+   "p_mcnemar": 5.982465784963322e-40,
+   "diferencia": -0.471875,
+   "ic95": [
+    -0.51875,
+    -0.425
+   ],
+   "pares_solo_b": [
+    "FALLO_C s21",
+    "FALLO_C s22",
+    "FALLO_C s25",
+    "FALLO_C s27",
+    "FALLO_C s29",
+    "FALLO_C s30",
+    "FALLO_C s31",
+    "FALLO_C s32",
+    "FALLO_C s34",
+    "FALLO_C s36",
+    "FALLO_C s38",
+    "FALLO_C s39",
+    "FALLO_C s40",
+    "FALLO_C s42",
+    "FALLO_C s43",
+    "FALLO_C s44",
+    "FALLO_C s45",
+    "FALLO_C s46",
+    "FALLO_C s47",
+    "FALLO_C s48",
+    "FALLO_C s49",
+    "FALLO_C s51",
+    "FALLO_C s52",
+    "FALLO_C s53",
+    "FALLO_C s54",
+    "FALLO_C s55",
+    "FALLO_C s56",
+    "FALLO_C s57",
+    "FALLO_C s58",
+    "FALLO_C s59",
+    "FALLO_S s56",
+    "JAM_C s20",
+    "JAM_C s21",
+    "JAM_C s22",
+    "JAM_C s23",
+    "JAM_C s24",
+    "JAM_C s25",
+    "JAM_C s26",
+    "JAM_C s27",
+    "JAM_C s28",
+    "JAM_C s29",
+    "JAM_C s32",
+    "JAM_C s34",
+    "JAM_C s35",
+    "JAM_C s36",
+    "JAM_C s38",
+    "JAM_C s39",
+    "JAM_C s40",
+    "JAM_C s41",
+    "JAM_C s42",
+    "JAM_C s43",
+    "JAM_C s44",
+    "JAM_C s45",
+    "JAM_C s47",
+    "JAM_C s48",
+    "JAM_C s50",
+    "JAM_C s51",
+    "JAM_C s52",
+    "JAM_C s54",
+    "JAM_C s55",
+    "JAM_C s56",
+    "JAM_C s57",
+    "JAM_C s58",
+    "JAM_C s59",
+    "JAM_S s20",
+    "JAM_S s24",
+    "JAM_S s25",
+    "JAM_S s27",
+    "JAM_S s28",
+    "JAM_S s31",
+    "JAM_S s37",
+    "JAM_S s39",
+    "JAM_S s40",
+    "JAM_S s41",
+    "JAM_S s43",
+    "JAM_S s46",
+    "JAM_S s49",
+    "JAM_S s53",
+    "JAM_S s57",
+    "JAM_S s59",
+    "PUE_C s21",
+    "PUE_C s22",
+    "PUE_C s23",
+    "PUE_C s24",
+    "PUE_C s25",
+    "PUE_C s26",
+    "PUE_C s28",
+    "PUE_C s29",
+    "PUE_C s30",
+    "PUE_C s34",
+    "PUE_C s40",
+    "PUE_C s41",
+    "PUE_C s42",
+    "PUE_C s43",
+    "PUE_C s54",
+    "PUE_C s58",
+    "PUE_C s59",
+    "PUE_S s29",
+    "PUE_S s34",
+    "SSDF_C s21",
+    "SSDF_C s22",
+    "SSDF_C s23",
+    "SSDF_C s25",
+    "SSDF_C s31",
+    "SSDF_C s32",
+    "SSDF_C s33",
+    "SSDF_C s34",
+    "SSDF_C s35",
+    "SSDF_C s36",
+    "SSDF_C s37",
+    "SSDF_C s38",
+    "SSDF_C s39",
+    "SSDF_C s40",
+    "SSDF_C s42",
+    "SSDF_C s43",
+    "SSDF_C s44",
+    "SSDF_C s45",
+    "SSDF_C s46",
+    "SSDF_C s47",
+    "SSDF_C s49",
+    "SSDF_C s52",
+    "SSDF_C s53",
+    "SSDF_C s54",
+    "SSDF_C s56",
+    "SSDF_C s57",
+    "SSDF_C s58",
+    "SSDF_S s20",
+    "SSDF_S s21",
+    "SSDF_S s22",
+    "SSDF_S s23",
+    "SSDF_S s25",
+    "SSDF_S s26",
+    "SSDF_S s27",
+    "SSDF_S s30",
+    "SSDF_S s31",
+    "SSDF_S s32",
+    "SSDF_S s34",
+    "SSDF_S s37",
+    "SSDF_S s38",
+    "SSDF_S s40",
+    "SSDF_S s41",
+    "SSDF_S s42",
+    "SSDF_S s43",
+    "SSDF_S s46",
+    "SSDF_S s47",
+    "SSDF_S s48",
+    "SSDF_S s49",
+    "SSDF_S s50",
+    "SSDF_S s51",
+    "SSDF_S s53",
+    "SSDF_S s54",
+    "SSDF_S s55",
+    "SSDF_S s56",
+    "SSDF_S s57",
+    "SSDF_S s58",
+    "SSDF_S s59"
+   ]
+  }
+ },
+ "version": "disponibilidad 1.0 (19/10/2026)",
+ "pasos_con_servicio": {
+  "reglas": [
+   1230,
+   1280
+  ],
+  "agente": [
+   49,
+   1280
+  ],
+  "agente_escudo": [
+   88,
+   1280
+  ],
+  "agente_escudo_simplex": [
+   407,
+   1280
+  ],
+  "agente_escudo_vivo": [
+   1226,
+   1280
+  ]
+ },
+ "m3_por_escenario": {
+  "FALLO_C": [
+   [
+    39,
+    40
+   ],
+   [
+    0,
+    40
+   ],
+   [
+    2,
+    40
+   ],
+   [
+    17,
+    40
+   ],
+   [
+    39,
+    40
+   ]
+  ],
+  "FALLO_S": [
+   [
+    40,
+    40
+   ],
+   [
+    0,
+    40
+   ],
+   [
+    0,
+    40
+   ],
+   [
+    0,
+    40
+   ],
+   [
+    40,
+    40
+   ]
+  ],
+  "JAM_C": [
+   [
+    40,
+    40
+   ],
+   [
+    1,
+    40
+   ],
+   [
+    6,
+    40
+   ],
+   [
+    16,
+    40
+   ],
+   [
+    40,
+    40
+   ]
+  ],
+  "JAM_S": [
+   [
+    40,
+    40
+   ],
+   [
+    4,
+    40
+   ],
+   [
+    5,
+    40
+   ],
+   [
+    11,
+    40
+   ],
+   [
+    40,
+    40
+   ]
+  ],
+  "PUE_C": [
+   [
+    40,
+    40
+   ],
+   [
+    5,
+    40
+   ],
+   [
+    6,
+    40
+   ],
+   [
+    23,
+    40
+   ],
+   [
+    40,
+    40
+   ]
+  ],
+  "PUE_S": [
+   [
+    39,
+    40
+   ],
+   [
+    3,
+    40
+   ],
+   [
+    4,
+    40
+   ],
+   [
+    9,
+    40
+   ],
+   [
+    39,
+    40
+   ]
+  ],
+  "SSDF_C": [
+   [
+    35,
+    40
+   ],
+   [
+    0,
+    40
+   ],
+   [
+    1,
+    40
+   ],
+   [
+    18,
+    40
+   ],
+   [
+    34,
+    40
+   ]
+  ],
+  "SSDF_S": [
+   [
+    38,
+    40
+   ],
+   [
+    3,
+    40
+   ],
+   [
+    1,
+    40
+   ],
+   [
+    13,
+    40
+   ],
+   [
+    38,
+    40
+   ]
+  ]
+ },
+ "pasos_vivo": {
+  "pasos": 1280,
+  "monitor_espera": 400,
+  "monitor_estado_aceptada": 379,
+  "vivacidad": 379,
+  "vivacidad_transmite": 379,
+  "vivacidad_perjudicial": 0,
+  "vivacidad_exito": 374,
+  "respaldo": 182,
+  "respaldo_transmite": 163,
+  "respaldo_perjudicial": 0,
+  "respaldo_exito": 161,
+  "monitor_enlace_degradado": 7,
+  "monitor_estado_sin_alternativa": 28
+ },
+ "emparejamiento": {
+  "iguales": 258,
+  "n": 320,
+  "intervenidos": 320
+ },
+ "episodios_m1": []
+}

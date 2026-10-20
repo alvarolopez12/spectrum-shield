@@ -1,0 +1,6 @@
+sistema,modelo,episodios,duracion_media_s,duracion_mediana_s,turnos_medios,tokens_entrada_medios,tokens_salida_medios,propuestas_no_validas,recordatorios,respuestas_truncadas,pasos_sin_accion,pasos_en_modo_seguro,pasos_de_decision
+reglas,,320,0.0,0.0,0,0,0,0,0,0,0,0,1280
+agente,qwen3.8:27b,320,164.4,159.5,8.63,27825,898,0,0,0,2,0,1280
+agente_escudo,qwen3.8:27b,320,167.1,160.4,8.79,28658,911,0,0,0,6,1,1280
+agente,granite4.1:8b,320,19.0,19.4,7.36,18366,427,1,11,0,0,0,1280
+agente_escudo,granite4.1:8b,320,21.2,20.6,9.54,25816,488,0,22,0,1,10,1280
