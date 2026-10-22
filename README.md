@@ -41,7 +41,12 @@ scripts/
   exploratorios.py             cifras y figuras de los experimentos exploratorios para la memoria
   disponibilidad.py            ataque a la disponibilidad («seguro pero inútil») y Simplex con vigilancia de la vivacidad
   experimentos_disponibilidad.sh  ejecuciones de disponibilidad.py (unas 7 h con granite)
-  garantias.py                 garantías del escudo según la evidencia («contrato de percepción»), sin modelo de
+  ataque_evidencia.py          experimento 6: ataques adaptativos a la evidencia del escudo y del monitor de vivacidad
+  experimentos_evidencia.sh    ejecuciones de ataque_evidencia.py (unas 5,5 h con granite)
+  ataque_evidencia_vivo.py     experimento 6, complemento: ataque al origen contra el sistema final (escudo con
+                               vigilancia de la vivacidad) y coste de quitar el desbloqueo por origen
+  experimentos_evidencia_vivo.sh  ejecuciones de ataque_evidencia_vivo.py (unas 3 h; espera a que acabe el anterior)
+  garantias.py                 garantías del escudo según la evidencia («contrato de evidencia»), sin modelo de
                                lenguaje; con --solo-campanas, contraste de la cota con las campañas guardadas
   caracterizar_escudo.py       errores del escudo sin modelo de lenguaje, sobre todas las acciones candidatas
 poc_radio/                     prueba de concepto con radio real en 434 MHz (dos ADALM-Pluto y un RTL-SDR): sensado real
@@ -65,6 +70,8 @@ python3 scripts/escudo_extra.py --campana campana                        # riesg
 caffeinate -i bash scripts/experimentos_extra.sh                         # exploratorios, tras la campaña (unas 8 h)
 caffeinate -i bash scripts/experimentos_simplex.sh                       # respaldo Simplex, tras los anteriores (unas 3 h)
 caffeinate -i bash scripts/experimentos_disponibilidad.sh                # disponibilidad y vivacidad (unas 7 h)
+caffeinate -i bash scripts/experimentos_evidencia.sh                     # experimento 6 (unas 5,5 h)
+caffeinate -i bash scripts/experimentos_evidencia_vivo.sh                # complemento del experimento 6 (unas 3 h)
 python3 scripts/garantias.py                                             # garantías del escudo (unos minutos)
 python3 scripts/garantias.py --solo-campanas                             # contraste con las campañas (1 s)
 python3 poc_radio/comprobar_radio.py                                     # radio real: comprobación y calibración (poc_radio/README.md)

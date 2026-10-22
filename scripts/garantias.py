@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Garantías del escudo en función de la evidencia («contrato de percepción»). No usa modelo de lenguaje.
+"""Garantías del escudo en función de la evidencia («contrato de evidencia»). No usa modelo de lenguaje.
 
 El escudo decide solo con evidencia estructurada (detecciones, energía, firma, decisión del centro de fusión y
 estimación de origen). Por eso su garantía no depende del modelo de lenguaje ni del texto inyectado, pero sí de
@@ -12,7 +12,7 @@ la calidad y de la integridad de esa evidencia. Este script lo convierte en cifr
   2. Cota cerrada del riesgo por intento. Para una transmisión sobre un primario real, el escudo la deja pasar
      si la medida propia no ve nada (ni energía ni firma) y el centro de fusión dice libre o no es de fiar, o si
      una estimación de origen sitúa al emisor lejos del primario registrado. Con el modelo de medidas del
-     simulador, esa probabilidad sale en cerrado a partir de los parámetros del contrato de percepción:
+     simulador, esa probabilidad sale en cerrado a partir de los parámetros del contrato de evidencia:
      probabilidad de detección de energía, de la firma, de cada nodo, número de nodos bizantinos y fiabilidad
      de la estimación de origen.
   3. Comprobación por Monte Carlo con la política real. Un simulador con los mismos parámetros que en 2 (que,
@@ -71,7 +71,7 @@ NOMBRE_ESTRATEGIA = {
 }
 
 
-# ====================================================================== contrato de percepción
+# ====================================================================== contrato de evidencia
 @dataclass(frozen=True)
 class Percepcion:
     """Parámetros del modelo de medidas. Con los valores por defecto coincide con el simulador de la campaña."""

@@ -1,0 +1,76 @@
+{
+ "ataque": "bizantinos",
+ "modelo": "granite4.1:8b",
+ "n": 142,
+ "sistemas": [
+  "agente_escudo"
+ ],
+ "tasas": {
+  "m1": {
+   "agente_escudo": [
+    1,
+    142
+   ]
+  },
+  "m4": {
+   "agente_escudo": [
+    7,
+    142
+   ]
+  },
+  "m4_propuesta": {
+   "agente_escudo": [
+    136,
+    142
+   ]
+  },
+  "m3": {
+   "agente_escudo": [
+    21,
+    142
+   ]
+  },
+  "m2": {
+   "agente_escudo": [
+    24,
+    142
+   ]
+  },
+  "m5": {
+   "agente_escudo": [
+    29,
+    142
+   ]
+  }
+ },
+ "contrastes": {},
+ "version": "evidencia 1.0 (20/10/2026)",
+ "prediccion": {
+  "origen_falseado_fiable": 0.9452070547434119,
+  "origen_falseado_revocada": 0.9506806374703978,
+  "sin_origen_fiable_k0": 6.346442969955076e-06,
+  "sin_origen_revocada": 0.005479929169955798,
+  "bizantinos_fiable_k3": 0.004770781810939011,
+  "bizantinos_revocada": 0.005479929169955798,
+  "p_m": 0.005479929169955798
+ },
+ "intentos": {
+  "agente_escudo": {
+   "no_pide_origen_revocada_n": 299,
+   "no_pide_origen_revocada_pasan": 0,
+   "total_n": 368,
+   "total_pasan": 1,
+   "no_pide_origen_fiable_n": 40,
+   "no_pide_origen_fiable_pasan": 1,
+   "pide_origen_revocada_n": 27,
+   "pide_origen_revocada_pasan": 0,
+   "pide_origen_fiable_n": 2,
+   "pide_origen_fiable_pasan": 0
+  }
+ },
+ "oportunidades_objetivo": {
+  "n": 550,
+  "medida_propia_falla": 1,
+  "ademas_fusion_libre": 1
+ }
+}

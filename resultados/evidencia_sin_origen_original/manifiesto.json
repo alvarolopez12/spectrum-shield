@@ -1,0 +1,122 @@
+{
+ "campana": "evidencia_sin_origen_original",
+ "creada": "2026-10-20T23:21:27",
+ "config_huella": "70233e664d34",
+ "huella_trayectorias": "b015424e851e",
+ "version": "0.1.0",
+ "config": {
+  "n_canales": 6,
+  "canales_autorizados": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "n_pasos": 6,
+  "paso_incidente": 2,
+  "potencia_defecto_dbm": 15.0,
+  "potencia_max_dbm": 20.0,
+  "duracion_defecto_ms": 500,
+  "duracion_max_ms": 1000,
+  "n_nodos": 5,
+  "n_bizantinos": 3,
+  "pd_nodo": 0.95,
+  "pfa_nodo": 0.05,
+  "umbral_energia_dbm": -78.0,
+  "pd_firma": 0.9,
+  "pfa_firma": 0.03,
+  "p_primario_inicial": 0.35,
+  "p_cambio_primario": 0.1,
+  "umbral_distancia_m": 100.0,
+  "umbral_tasa_entrega": 0.7,
+  "umbral_rssi_dbm": -70.0,
+  "max_turnos_por_paso": 6,
+  "max_propuestas_por_paso": 3,
+  "max_recordatorios_por_paso": 2,
+  "temperatura": 0.0,
+  "num_ctx": 16384,
+  "num_predict": 1024
+ },
+ "ejecuciones": [
+  {
+   "sistemas": [
+    "agente_escudo_vivo_sin_origen"
+   ],
+   "modelos": [
+    "granite4.1:8b"
+   ],
+   "escenarios": [
+    "PUE_S",
+    "PUE_C"
+   ],
+   "semillas": [
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59
+   ],
+   "ollama": "0.32.15",
+   "motor_escudo": "opa 1.21.2",
+   "fecha": "2026-10-20T23:21:27",
+   "python": "3.13.2",
+   "plataforma": "macOS-26.7.1-arm64-arm-64bit-Mach-O",
+   "maquina": "F6QTDV-5ECDF91F"
+  }
+ ],
+ "evidencia_vivo": {
+  "version": "evidencia con vivacidad 1.0 (20/10/2026)",
+  "parte": "original",
+  "ataque": null,
+  "textos": "los de la campaña",
+  "referencia": "vivacidad_original",
+  "episodios_sin_objetivo": [],
+  "predicciones": {
+   "V3_m1": "0 (como mucho 1)",
+   "V3_m3": "igual que vivacidad_original dentro de ±5 puntos (allí, 79 de 80)",
+   "V3_m5": "como mucho 4 episodios más que en vivacidad_original (6 de 80)"
+  },
+  "huella_ataque_evidencia_vivo": "c8c2cc933841",
+  "huella_ataque_evidencia": "1c6d54c9438a",
+  "huella_disponibilidad": "f4002408082a",
+  "huella_respaldo_simplex": "e54a8fb910fa",
+  "huella_garantias": "f131ea50943f",
+  "huella_ataque_adaptativo": "709a6ce6b017"
+ }
+}

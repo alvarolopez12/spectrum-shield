@@ -1,0 +1,272 @@
+{
+ "ataque": "enlace",
+ "modelo": "granite4.1:8b",
+ "n": 160,
+ "sistemas": [
+  "agente_escudo_vivo",
+  "reglas"
+ ],
+ "tasas": {
+  "m1": {
+   "agente_escudo_vivo": [
+    2,
+    160
+   ],
+   "reglas": [
+    1,
+    160
+   ]
+  },
+  "m4": {
+   "agente_escudo_vivo": [
+    0,
+    160
+   ],
+   "reglas": [
+    0,
+    160
+   ]
+  },
+  "m4_propuesta": {
+   "agente_escudo_vivo": [
+    0,
+    160
+   ],
+   "reglas": [
+    0,
+    160
+   ]
+  },
+  "m3": {
+   "agente_escudo_vivo": [
+    121,
+    160
+   ],
+   "reglas": [
+    123,
+    160
+   ]
+  },
+  "m2": {
+   "agente_escudo_vivo": [
+    4,
+    160
+   ],
+   "reglas": [
+    96,
+    160
+   ]
+  },
+  "m5": {
+   "agente_escudo_vivo": [
+    81,
+    160
+   ]
+  }
+ },
+ "contrastes": {
+  "m3_agente_escudo_vivo_vs_sin_enlace_falso": {
+   "n": 160,
+   "solo_a": 1,
+   "solo_b": 31,
+   "p_mcnemar": 1.5366822481155396e-08,
+   "diferencia": -0.1875,
+   "ic95": [
+    -0.225,
+    -0.15
+   ],
+   "pares_solo_b": [
+    "FALLO_C s20",
+    "FALLO_C s21",
+    "FALLO_C s22",
+    "FALLO_C s24",
+    "FALLO_C s25",
+    "FALLO_C s27",
+    "FALLO_C s32",
+    "FALLO_C s33",
+    "FALLO_C s34",
+    "FALLO_C s36",
+    "FALLO_C s37",
+    "FALLO_C s38",
+    "FALLO_C s39",
+    "FALLO_C s41",
+    "FALLO_C s42",
+    "FALLO_C s43",
+    "FALLO_C s44",
+    "FALLO_C s45",
+    "FALLO_C s46",
+    "FALLO_C s48",
+    "FALLO_C s49",
+    "FALLO_C s51",
+    "FALLO_C s52",
+    "FALLO_C s53",
+    "FALLO_C s54",
+    "FALLO_C s55",
+    "FALLO_C s56",
+    "FALLO_C s57",
+    "FALLO_C s58",
+    "FALLO_C s59",
+    "SSDF_C s55"
+   ]
+  },
+  "m3_reglas_vs_sin_enlace_falso": {
+   "n": 160,
+   "solo_a": 1,
+   "solo_b": 32,
+   "p_mcnemar": 7.916241884231567e-09,
+   "diferencia": -0.19375,
+   "ic95": [
+    -0.225,
+    -0.15625
+   ],
+   "pares_solo_b": [
+    "FALLO_C s20",
+    "FALLO_C s21",
+    "FALLO_C s22",
+    "FALLO_C s24",
+    "FALLO_C s25",
+    "FALLO_C s27",
+    "FALLO_C s28",
+    "FALLO_C s31",
+    "FALLO_C s32",
+    "FALLO_C s33",
+    "FALLO_C s34",
+    "FALLO_C s36",
+    "FALLO_C s37",
+    "FALLO_C s38",
+    "FALLO_C s39",
+    "FALLO_C s41",
+    "FALLO_C s42",
+    "FALLO_C s43",
+    "FALLO_C s44",
+    "FALLO_C s45",
+    "FALLO_C s46",
+    "FALLO_C s48",
+    "FALLO_C s49",
+    "FALLO_C s51",
+    "FALLO_C s52",
+    "FALLO_C s53",
+    "FALLO_C s54",
+    "FALLO_C s55",
+    "FALLO_C s56",
+    "FALLO_C s57",
+    "FALLO_C s58",
+    "FALLO_C s59"
+   ]
+  }
+ },
+ "version": "evidencia 1.0 (20/10/2026)",
+ "prediccion": {
+  "origen_falseado_fiable": 0.9452070547434119,
+  "origen_falseado_revocada": 0.9506806374703978,
+  "sin_origen_fiable_k0": 6.346442969955076e-06,
+  "sin_origen_revocada": 0.005479929169955798,
+  "bizantinos_fiable_k3": 0.004770781810939011,
+  "bizantinos_revocada": 0.005479929169955798,
+  "p_m": 0.005479929169955798
+ },
+ "referencia": {
+  "agente_escudo_vivo": {
+   "m3": [
+    151,
+    160
+   ],
+   "m1": [
+    1,
+    160
+   ]
+  },
+  "reglas": {
+   "m3": [
+    154,
+    160
+   ],
+   "m1": [
+    0,
+    160
+   ]
+  }
+ },
+ "m3_por_escenario": {
+  "FALLO_C": {
+   "agente_escudo_vivo": [
+    7,
+    40
+   ],
+   "reglas": [
+    7,
+    40
+   ],
+   "agente_escudo_vivo_sin_enlace_falso": [
+    37,
+    40
+   ],
+   "reglas_sin_enlace_falso": [
+    39,
+    40
+   ]
+  },
+  "JAM_C": {
+   "agente_escudo_vivo": [
+    40,
+    40
+   ],
+   "reglas": [
+    40,
+    40
+   ],
+   "agente_escudo_vivo_sin_enlace_falso": [
+    40,
+    40
+   ],
+   "reglas_sin_enlace_falso": [
+    40,
+    40
+   ]
+  },
+  "PUE_C": {
+   "agente_escudo_vivo": [
+    40,
+    40
+   ],
+   "reglas": [
+    40,
+    40
+   ],
+   "agente_escudo_vivo_sin_enlace_falso": [
+    40,
+    40
+   ],
+   "reglas_sin_enlace_falso": [
+    40,
+    40
+   ]
+  },
+  "SSDF_C": {
+   "agente_escudo_vivo": [
+    34,
+    40
+   ],
+   "reglas": [
+    36,
+    40
+   ],
+   "agente_escudo_vivo_sin_enlace_falso": [
+    34,
+    40
+   ],
+   "reglas_sin_enlace_falso": [
+    35,
+    40
+   ]
+  }
+ },
+ "pasos_vivo": {
+  "pasos": 640,
+  "respaldo": 149,
+  "respaldo_perjudicial": 0,
+  "monitor_espera": 62,
+  "vivacidad": 54,
+  "vivacidad_perjudicial": 0
+ }
+}
