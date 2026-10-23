@@ -46,6 +46,9 @@ scripts/
   ataque_evidencia_vivo.py     experimento 6, complemento: ataque al origen contra el sistema final (escudo con
                                vigilancia de la vivacidad) y coste de quitar el desbloqueo por origen
   experimentos_evidencia_vivo.sh  ejecuciones de ataque_evidencia_vivo.py (unas 3 h; espera a que acabe el anterior)
+  incidentes_nuevos.py         experimento 7: incidentes que las reglas no previeron (atenuación del enlace y caída
+                               del centro de fusión), con reglas, reglas ampliadas, agente con escudo y sistema final
+  experimentos_incidentes.sh   ejecuciones de incidentes_nuevos.py (unas 8 o 9 h con granite y qwen)
   garantias.py                 garantías del escudo según la evidencia («contrato de evidencia»), sin modelo de
                                lenguaje; con --solo-campanas, contraste de la cota con las campañas guardadas
   caracterizar_escudo.py       errores del escudo sin modelo de lenguaje, sobre todas las acciones candidatas
@@ -72,6 +75,7 @@ caffeinate -i bash scripts/experimentos_simplex.sh                       # respa
 caffeinate -i bash scripts/experimentos_disponibilidad.sh                # disponibilidad y vivacidad (unas 7 h)
 caffeinate -i bash scripts/experimentos_evidencia.sh                     # experimento 6 (unas 5,5 h)
 caffeinate -i bash scripts/experimentos_evidencia_vivo.sh                # complemento del experimento 6 (unas 3 h)
+caffeinate -i bash scripts/experimentos_incidentes.sh                    # experimento 7 (unas 8 o 9 h)
 python3 scripts/garantias.py                                             # garantías del escudo (unos minutos)
 python3 scripts/garantias.py --solo-campanas                             # contraste con las campañas (1 s)
 python3 poc_radio/comprobar_radio.py                                     # radio real: comprobación y calibración (poc_radio/README.md)

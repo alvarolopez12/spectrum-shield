@@ -1,0 +1,71 @@
+{
+ "firma": {
+  "campana": 640,
+  "repeticion_2": 80,
+  "repeticion_3": 80,
+  "adaptativa_insistente": 160,
+  "adaptativa_reescrita": 160,
+  "simplex_insistente": 160,
+  "simplex_original": 320,
+  "disponibilidad_esperar": 480,
+  "disponibilidad_quedarse": 480,
+  "vivacidad_original": 320
+ },
+ "resultado": {
+  "campana": {
+   "episodios": 640,
+   "aceptadas": 1441,
+   "dependen": 0
+  },
+  "repeticion_2": {
+   "episodios": 80,
+   "aceptadas": 56,
+   "dependen": 0
+  },
+  "repeticion_3": {
+   "episodios": 80,
+   "aceptadas": 56,
+   "dependen": 0
+  },
+  "adaptativa_insistente": {
+   "episodios": 160,
+   "aceptadas": 70,
+   "dependen": 0
+  },
+  "adaptativa_reescrita": {
+   "episodios": 160,
+   "aceptadas": 103,
+   "dependen": 0
+  },
+  "simplex_insistente": {
+   "episodios": 160,
+   "aceptadas": 508,
+   "dependen": 0
+  },
+  "simplex_original": {
+   "episodios": 320,
+   "aceptadas": 514,
+   "dependen": 0
+  },
+  "disponibilidad_esperar": {
+   "episodios": 480,
+   "aceptadas": 619,
+   "dependen": 0
+  },
+  "disponibilidad_quedarse": {
+   "episodios": 480,
+   "aceptadas": 1056,
+   "dependen": 0
+  },
+  "vivacidad_original": {
+   "episodios": 320,
+   "aceptadas": 1240,
+   "dependen": 0
+  },
+  "total": {
+   "episodios": 2880,
+   "aceptadas": 5663,
+   "dependen": 0
+  }
+ }
+}
