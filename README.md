@@ -31,6 +31,7 @@ scripts/
   resumen.py                   tasas con intervalo de Agresti-Coull y contrastes de McNemar
   figuras.py                   figuras y tablas de resultados del capítulo 5 (necesita matplotlib)
   datos_cap5.py                cifras del capítulo 5 por modelo (tasas, contrastes, desgloses), en JSON
+  m1_por_tipo.py               M1 por tipo de daño (sobre un primario y fuera de límites), sin protección y con escudo
   escudo_extra.py              riesgo residual del escudo: cota analítica, I1 con memoria, origen comprometido
                                y contrafactual sobre una campaña
   ataque_adaptativo.py         ataques adaptativos (insistente y reescrito por un modelo) sobre los mismos episodios
@@ -69,6 +70,7 @@ caffeinate -i python3 scripts/ejecutar.py --campana piloto --semillas 0-4
 python3 scripts/resumen.py --campana piloto
 python3 scripts/figuras.py --campana piloto     # figuras (pip install matplotlib)
 python3 scripts/datos_cap5.py --campana campana --modelo granite4.1:8b   # cifras del capítulo 5
+python3 scripts/m1_por_tipo.py --campana campana                         # M1 por tipo de daño (Tabla 5.7)
 python3 scripts/escudo_extra.py --campana campana                        # riesgo residual del escudo (1 min)
 caffeinate -i bash scripts/experimentos_extra.sh                         # exploratorios, tras la campaña (unas 8 h)
 caffeinate -i bash scripts/experimentos_simplex.sh                       # respaldo Simplex, tras los anteriores (unas 3 h)
